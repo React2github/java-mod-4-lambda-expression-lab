@@ -1,18 +1,26 @@
 @FunctionalInterface
-interface nextOddNum {
-    int applyAsInt(int x, int y);
+interface NextOddNum {
+    int applyAsInt(int x);
 }
 
 public class Main {
-	static nextOddNum OddNum = (x,y) -> x + y;
-    int res = OddNum.applyAsInt(3, 2);
+	static NextOddNum oddNum = (x) -> {
+        // take our input and find next odd num 
+        // use divisiblity to determine even or odd 
+        int alteredNum = x+1;
+        while(alteredNum % 2 == 0) {
+            alteredNum += 1;
+        }
+        return alteredNum;
+    };
+    int res = oddNum.applyAsInt(3);
     
 
     public static void main(String[] args) {
         int num = 5;
         int num2 = 10;
 
-        System.out.println(OddNum.applyAsInt(num,num2)); // 7
-        System.out.println(OddNum.applyAsInt(num2, num)); // 11
+        System.out.println(oddNum.applyAsInt(num)); // 7
+        System.out.println(oddNum.applyAsInt(num2)); // 11
     }
 }
